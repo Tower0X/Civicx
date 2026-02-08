@@ -1,0 +1,253 @@
+{
+  "app": {
+    "title": "UrbanCare",
+    "subtitle": "Building Better Communities"
+  },
+  "nav": {
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": {
+      "part1": "Report Issues,",
+      "highlight": "Transform",
+      "part2": "Your Community"
+    },
+    "description": "Help build safer, cleaner neighborhoods by reporting infrastructure issues. From potholes to broken streetlights, your voice matters.",
+    "report": "Report an Issue",
+    "viewReports": "View Reports",
+    "stats": {
+      "issuesResolved": "Issues Resolved",
+      "activeCitizens": "Active Citizens",
+      "avgResponse": "Avg Response"
+    },
+    "floating": {
+      "issueReported": "Issue Reported",
+      "communityActive": "Community Active"
+    }
+  },
+  "featuresSection": {
+    "title": "Powerful Features for Better Communities",
+    "description": "Everything you need to report, track, and resolve civic issues efficiently and effectively.",
+    "items": {
+      "photo": {
+        "title": "Photo Documentation",
+        "desc": "Capture and upload high-quality images of infrastructure issues with automatic metadata tagging."
+      },
+      "gps": {
+        "title": "GPS Location Tracking",
+        "desc": "Precise location capture using GPS coordinates ensures accurate issue positioning and faster response."
+      },
+      "community": {
+        "title": "Community Engagement",
+        "desc": "Connect with neighbors, track issue status, and see the impact of your reports on the community."
+      },
+      "realtime": {
+        "title": "Real-time Updates",
+        "desc": "Get instant notifications about your reported issues and track resolution progress in real-time."
+      },
+      "admin": {
+        "title": "Admin Dashboard",
+        "desc": "Comprehensive administrative tools for managing reports, assigning tasks, and monitoring city-wide issues."
+      },
+      "analytics": {
+        "title": "Analytics & Insights",
+        "desc": "Data-driven insights help administrators prioritize resources and track community improvement trends."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "description": "Reporting civic issues is simple and straightforward. Follow these four easy steps to make a difference.",
+    "steps": {
+      "capture": {
+        "title": "Capture the Issue",
+        "desc": "Take a clear photo of the infrastructure problem using your mobile device or camera."
+      },
+      "location": {
+        "title": "Add Location Details",
+        "desc": "GPS automatically captures the exact location, or manually adjust for precision."
+      },
+      "submit": {
+        "title": "Submit Your Report",
+        "desc": "Add a brief description and submit your report to the appropriate authorities."
+      },
+      "track": {
+        "title": "Track Progress",
+        "desc": "Monitor the status of your report and receive updates when action is taken."
+      }
+    }
+  },
+  "issueTypes": {
+    "title": "What Can You Report?",
+    "description": "Our platform covers a wide range of civic issues to help keep your community safe and well-maintained.",
+    "items": {
+      "road": {
+        "title": "Road Infrastructure",
+        "desc": "Report potholes, damaged roads, broken sidewalks, and street maintenance issues.",
+        "count": "1,247 reports"
+      },
+      "waste": {
+        "title": "Waste Management",
+        "desc": "Report illegal dumping, overflowing bins, litter, and garbage collection issues.",
+        "count": "892 reports"
+      },
+      "environment": {
+        "title": "Environmental Issues",
+        "desc": "Report damaged trees, fallen branches, landscaping problems, and green space issues.",
+        "count": "534 reports"
+      },
+      "utilities": {
+        "title": "Utilities & Infrastructure",
+        "desc": "Report water leaks, gas issues, electrical problems, and utility infrastructure concerns.",
+        "count": "678 reports"
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to Make a Difference?",
+    "description": "Join thousands of engaged citizens working together to build safer, cleaner, and better communities. Your report can spark positive change.",
+    "forCitizens": {
+      "title": "For Citizens",
+      "desc": "Report issues, track progress, and engage with your community",
+      "button": "Get Started"
+    },
+    "forAdmins": {
+      "title": "For Administrators",
+      "desc": "Manage reports, coordinate responses, and track city-wide data",
+      "button": "Admin Access"
+    },
+    "support": "Questions? Contact our support team",
+    "supportButton": "Get Support"
+  },
+  "footer": {
+    "company": "CivicIssueRepoter",
+    "description": "Empowering communities to report and resolve civic issues through technology and civic engagement.",
+    "quickLinks": "Quick Links",
+    "reportIssue": "Report Issue",
+    "viewReports": "View Reports",
+    "howItWorks": "How It Works",
+    "communityGuidelines": "Community Guidelines",
+    "support": "Support",
+    "helpCenter": "Help Center",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contactUs": "Contact Us",
+    "contact": "Contact",
+    "email": "support@civicreport.com",
+    "phone": "+91 0123456789",
+    "address": "123 Civic Center\nCommunity City, CC 12345",
+    "copyright": "© 2024 CivicIssueRepoter. All rights reserved. Building better communities together."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "returnHome": "Return to Home"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "subtitle": "Manage and resolve community issues",
+    "myProfile": "My Profile",
+    "stats": {
+      "totalIssues": "Total Issues",
+      "resolvedIssues": "Resolved Issues",
+      "inProgress": "Issues In Progress",
+      "pending": "Pending"
+    },
+    "searchPlaceholder": "Search issues...",
+    "table": {
+      "caption": "A list of all reported issues.",
+      "title": "Title",
+      "location": "Location",
+      "status": "Status",
+      "actions": "Actions",
+      "noIssues": "No issues found."
+    }
+  },
+  "citizen": {
+    "welcome": "Welcome, Citizen!",
+    "subtitle": "Help improve your community by reporting issues",
+    "myProfile": "My Profile",
+    "searchHeading": "Search Issues by Location",
+    "searchPlaceholder": "Enter city name...",
+    "recentIssues": "Recent Issues",
+    "issuesFound": "{{count}} issue",
+    "issuesFound_plural": "{{count}} issues",
+    "noIssuesAvailable": "No issues available at the moment.",
+    "reportNewIssue": "Report New Issue",
+    "reportNewIssueShort": "Report New Issue"
+  },
+  "reportIssue": {
+    "backToDashboard": "Back to Dashboard",
+    "title": "Report New Issue",
+    "form": {
+      "title": "Issue Title *",
+      "titlePlaceholder": "Enter your issue title",
+      "locationLabel": "📍 Location Name *",
+      "locationPlaceholder": "e.g., Downtown Yaoundé, Rue Foch, Douala",
+      "locationNote": "✓ This name will be displayed in issue reports",
+      "type": "Issue Type *",
+      "selectTypePlaceholder": "Select issue type",
+      "description": "Issue Description *",
+      "descriptionPlaceholder": "Describe the issue in detail...",
+      "upload": "Upload Image/Video",
+      "submit": "Submit Issue",
+      "submitting": "Submitting..."
+    },
+    "section": {
+      "issueInformation": "Issue Information",
+      "uploadMedia": "Upload Media"
+    },
+    "selectedFile": "Selected: {{name}} ({{size}} MB)",
+    "map": {
+      "title": "Map Reference",
+      "city": "City",
+      "yaounde": "Yaoundé",
+      "douala": "Douala",
+      "coordinatesCaptured": "Coordinates captured"
+    },
+    "validation": {
+      "fillAll": "Please fill all required fields",
+      "mustBeLoggedIn": "You must be logged in",
+      "reportedSuccess": "Issue reported successfully!",
+      "reportedFailed": "Failed to report issue",
+      "somethingWentWrong": "Something went wrong"
+    },
+    "types": {
+      "road": "Road Infrastructure",
+      "waste": "Waste Management",
+      "environment": "Environmental Issues",
+      "utilities": "Utilities & Infrastructure",
+      "safety": "Public Safety",
+      "other": "Other"
+    }
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "dashboard": "Dashboard",
+    "logout": "Logout",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signInSuccess": "Sign In Successful!",
+    "welcomeBack": "Welcome back!",
+    "welcomeBackAdmin": "Welcome back, Administrator!",
+    "signInFailed": "Sign In Failed!",
+    "invalidCredentials": "Invalid credentials",
+    "somethingWentWrong": "Something went wrong",
+    "signInDescription": "Access your account to report issues or manage community reports",
+    "citizen": "Citizen",
+    "administrator": "Administrator",
+    "signInCitizen": "Sign In as Citizen",
+    "signInAdmin": "Sign In as Administrator",
+    "noAccount": "Don't have an account?",
+    "signUpHere": "Sign up here",
+    "createAccount": "Create Account",
+    "createAccountDescription": "Join our community to report issues and help build better cities",
+    "adminCode": "Admin Code"
+  },
+  "form": {
+    "email": "Email",
+    "password": "Password"
+  }
+}

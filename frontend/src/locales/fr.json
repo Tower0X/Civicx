@@ -1,0 +1,253 @@
+{
+  "app": {
+    "title": "UrbanCare",
+    "subtitle": "Construire de meilleures collectivités"
+  },
+  "nav": {
+    "features": "Fonctionnalités",
+    "howItWorks": "Comment ça marche",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": {
+      "part1": "Signaler des problèmes,",
+      "highlight": "Transformer",
+      "part2": "Votre communauté"
+    },
+    "description": "Aidez à construire des quartiers plus sûrs et plus propres en signalant les problèmes d'infrastructure. Des nids-de-poule aux lampadaires cassés, votre voix compte.",
+    "report": "Signaler un problème",
+    "viewReports": "Voir les rapports",
+    "stats": {
+      "issuesResolved": "Problèmes résolus",
+      "activeCitizens": "Citoyens actifs",
+      "avgResponse": "Temps de réponse moyen"
+    },
+    "floating": {
+      "issueReported": "Problème signalé",
+      "communityActive": "Communauté active"
+    }
+  },
+  "featuresSection": {
+    "title": "Fonctionnalités puissantes pour de meilleures collectivités",
+    "description": "Tout ce dont vous avez besoin pour signaler, suivre et résoudre efficacement les problèmes civiques.",
+    "items": {
+      "photo": {
+        "title": "Documentation par photo",
+        "desc": "Capturez et téléversez des images de haute qualité des problèmes d'infrastructure avec balisage automatique des métadonnées."
+      },
+      "gps": {
+        "title": "Suivi de localisation GPS",
+        "desc": "La capture précise de la position via GPS assure un positionnement exact des problèmes et une réponse plus rapide."
+      },
+      "community": {
+        "title": "Engagement communautaire",
+        "desc": "Connectez-vous avec vos voisins, suivez le statut des problèmes et voyez l'impact de vos signalements sur la communauté."
+      },
+      "realtime": {
+        "title": "Mises à jour en temps réel",
+        "desc": "Recevez des notifications instantanées concernant vos signalements et suivez l'avancement en temps réel."
+      },
+      "admin": {
+        "title": "Tableau de bord administrateur",
+        "desc": "Outils administratifs complets pour gérer les rapports, attribuer des tâches et surveiller les problèmes au niveau de la ville."
+      },
+      "analytics": {
+        "title": "Analyses et informations",
+        "desc": "Des informations basées sur les données aident les administrateurs à prioriser les ressources et à suivre les tendances d'amélioration communautaire."
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "description": "Signaler des problèmes civiques est simple et direct. Suivez ces quatre étapes faciles pour faire la différence.",
+    "steps": {
+      "capture": {
+        "title": "Capturez le problème",
+        "desc": "Prenez une photo claire du problème d'infrastructure avec votre appareil mobile ou votre appareil photo."
+      },
+      "location": {
+        "title": "Ajoutez les détails de localisation",
+        "desc": "Le GPS capture automatiquement l'emplacement exact, ou ajustez manuellement pour plus de précision."
+      },
+      "submit": {
+        "title": "Soumettez votre rapport",
+        "desc": "Ajoutez une brève description et soumettez votre rapport aux autorités compétentes."
+      },
+      "track": {
+        "title": "Suivez l'avancement",
+        "desc": "Surveillez le statut de votre rapport et recevez des mises à jour lorsqu'une action est entreprise."
+      }
+    }
+  },
+  "issueTypes": {
+    "title": "Que pouvez-vous signaler ?",
+    "description": "Notre plateforme couvre une large gamme de problèmes civiques pour aider à garder votre communauté sûre et bien entretenue.",
+    "items": {
+      "road": {
+        "title": "Infrastructure routière",
+        "desc": "Signalez des nids-de-poule, des routes endommagées, des trottoirs cassés et des problèmes d'entretien des voies.",
+        "count": "1 247 rapports"
+      },
+      "waste": {
+        "title": "Gestion des déchets",
+        "desc": "Signalez les dépôts illégaux, les poubelles débordantes, les déchets et les problèmes de collecte.",
+        "count": "892 rapports"
+      },
+      "environment": {
+        "title": "Problèmes environnementaux",
+        "desc": "Signalez les arbres endommagés, les branches tombées, les problèmes d'aménagement paysager et d'espaces verts.",
+        "count": "534 rapports"
+      },
+      "utilities": {
+        "title": "Services et infrastructures",
+        "desc": "Signalez les fuites d'eau, les problèmes de gaz, les pannes électriques et les préoccupations liées aux infrastructures.",
+        "count": "678 rapports"
+      }
+    }
+  },
+  "cta": {
+    "title": "Prêt à faire la différence ?",
+    "description": "Rejoignez des milliers de citoyens engagés travaillant ensemble pour construire des communautés plus sûres, plus propres et meilleures. Votre signalement peut déclencher un changement positif.",
+    "forCitizens": {
+      "title": "Pour les citoyens",
+      "desc": "Signalez des problèmes, suivez l'avancement et impliquez-vous dans votre communauté",
+      "button": "Commencer"
+    },
+    "forAdmins": {
+      "title": "Pour les administrateurs",
+      "desc": "Gérez les rapports, coordonnez les réponses et suivez les données à l'échelle de la ville",
+      "button": "Accès admin"
+    },
+    "support": "Des questions ? Contactez notre équipe de support",
+    "supportButton": "Obtenir de l'aide"
+  },
+  "footer": {
+    "company": "CivicIssueRepoter",
+    "description": "Permettre aux communautés de signaler et de résoudre les problèmes civiques grâce à la technologie et à l'engagement civique.",
+    "quickLinks": "Liens rapides",
+    "reportIssue": "Signaler un problème",
+    "viewReports": "Voir les rapports",
+    "howItWorks": "Comment ça marche",
+    "communityGuidelines": "Directives communautaires",
+    "support": "Support",
+    "helpCenter": "Centre d'aide",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "contactUs": "Contactez-nous",
+    "contact": "Contact",
+    "email": "support@civicreport.com",
+    "phone": "+91 0123456789",
+    "address": "123 Civic Center\nCommunity City, CC 12345",
+    "copyright": "© 2024 CivicIssueRepoter. Tous droits réservés. Construire de meilleures communautés ensemble."
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oups ! Page introuvable",
+    "returnHome": "Retour à l'accueil"
+  },
+  "admin": {
+    "title": "Tableau de bord administrateur",
+    "subtitle": "Gérer et résoudre les problèmes communautaires",
+    "myProfile": "Mon profil",
+    "stats": {
+      "totalIssues": "Nombre total de problèmes",
+      "resolvedIssues": "Problèmes résolus",
+      "inProgress": "Problèmes en cours",
+      "pending": "En attente"
+    },
+    "searchPlaceholder": "Rechercher des problèmes...",
+    "table": {
+      "caption": "Liste de tous les problèmes signalés.",
+      "title": "Titre",
+      "location": "Emplacement",
+      "status": "Statut",
+      "actions": "Actions",
+      "noIssues": "Aucun problème trouvé."
+    }
+  },
+  "citizen": {
+    "welcome": "Bienvenue, citoyen !",
+    "subtitle": "Aidez à améliorer votre communauté en signalant des problèmes",
+    "myProfile": "Mon profil",
+    "searchHeading": "Rechercher des problèmes par emplacement",
+    "searchPlaceholder": "Entrez le nom de la ville...",
+    "recentIssues": "Problèmes récents",
+    "issuesFound": "{{count}} problème",
+    "issuesFound_plural": "{{count}} problèmes",
+    "noIssuesAvailable": "Aucun problème disponible pour le moment.",
+    "reportNewIssue": "Signaler un problème",
+    "reportNewIssueShort": "Signaler un problème"
+  },
+  "reportIssue": {
+    "backToDashboard": "Retour au tableau de bord",
+    "title": "Signaler un nouveau problème",
+    "form": {
+      "title": "Titre du problème *",
+      "titlePlaceholder": "Entrez le titre de votre problème",
+      "locationLabel": "📍 Nom du lieu *",
+      "locationPlaceholder": "ex: Centre-ville Yaoundé, Rue Foch, Douala",
+      "locationNote": "✓ Ce nom sera affiché dans les rapports de problèmes",
+      "type": "Type de problème *",
+      "selectTypePlaceholder": "Sélectionnez le type de problème",
+      "description": "Description du problème *",
+      "descriptionPlaceholder": "Décrivez le problème en détail...",
+      "upload": "Téléverser image/vidéo",
+      "submit": "Soumettre le rapport",
+      "submitting": "Envoi..."
+    },
+    "section": {
+      "issueInformation": "Informations sur le problème",
+      "uploadMedia": "Téléverser des médias"
+    },
+    "selectedFile": "Sélectionné : {{name}} ({{size}} MB)",
+    "map": {
+      "title": "Référence de la carte",
+      "city": "Ville",
+      "yaounde": "Yaoundé",
+      "douala": "Douala",
+      "coordinatesCaptured": "Coordonnées capturées"
+    },
+    "validation": {
+      "fillAll": "Veuillez remplir tous les champs requis",
+      "mustBeLoggedIn": "Vous devez être connecté",
+      "reportedSuccess": "Le problème a été signalé avec succès !",
+      "reportedFailed": "Échec de l'envoi du signalement",
+      "somethingWentWrong": "Une erreur est survenue"
+    },
+    "types": {
+      "road": "Infrastructure routière",
+      "waste": "Gestion des déchets",
+      "environment": "Problèmes environnementaux",
+      "utilities": "Services et infrastructures",
+      "safety": "Sécurité publique",
+      "other": "Autre"
+    }
+  },
+  "auth": {
+    "welcome": "Bienvenue",
+    "dashboard": "Tableau de bord",
+    "logout": "Se déconnecter",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "signInSuccess": "Connexion réussie !",
+    "welcomeBack": "Bon retour !",
+    "welcomeBackAdmin": "Bon retour, administrateur !",
+    "signInFailed": "Échec de la connexion !",
+    "invalidCredentials": "Identifiants invalides",
+    "somethingWentWrong": "Une erreur est survenue",
+    "signInDescription": "Accédez à votre compte pour signaler des problèmes ou gérer les rapports communautaires",
+    "citizen": "Citoyen",
+    "administrator": "Administrateur",
+    "signInCitizen": "Se connecter en tant que citoyen",
+    "signInAdmin": "Se connecter en tant qu'administrateur",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "signUpHere": "Inscrivez-vous ici",
+    "createAccount": "Créer un compte",
+    "createAccountDescription": "Rejoignez notre communauté pour signaler des problèmes et aider à construire de meilleures villes",
+    "adminCode": "Code administrateur"
+  },
+  "form": {
+    "email": "E-mail",
+    "password": "Mot de passe"
+  }
+}

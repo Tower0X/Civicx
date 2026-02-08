@@ -2,9 +2,11 @@ import { ArrowRight, Camera, MapPin, Users } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <section className="relative overflow-hidden">
@@ -16,19 +18,15 @@ const Hero = () => {
           <div className="space-y-8 animate-slide-in-left">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-                Report Issues,
+                {t("hero.title.part1")}
                 <br />
                 <span className="text-white bg-clip-text civic-gradient px-2 rounded-lg">
-                  Transform
+                  {t("hero.title.highlight")}
                 </span>
                 <br />
-                Your Community
+                {t("hero.title.part2")}
               </h1>
-              <p className="text-xl text-muted-foreground max-w-lg">
-                Help build safer, cleaner neighborhoods by reporting
-                infrastructure issues. From potholes to broken streetlights,
-                your voice matters.
-              </p>
+              <p className="text-xl text-muted-foreground max-w-lg">{t("hero.description")}</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -55,7 +53,7 @@ const Hero = () => {
                   />
 
                   <Camera className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5" />
-                  <span className="relative z-10">Report an Issue</span>
+                  <span className="relative z-10">{t("hero.report")}</span>
                   <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -66,7 +64,7 @@ const Hero = () => {
                   className="flex items-center space-x-2 cursor-pointer"
                 >
                   <MapPin className="h-5 w-5 text-green-600" />
-                  <span>View Reports</span>
+                  <span>{t("hero.viewReports")}</span>
                 </Button>
               </Link>
             </div>
@@ -75,21 +73,15 @@ const Hero = () => {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t">
               <div className="text-center">
                 <div className="text-2xl font-bold text-sky-500">2,847</div>
-                <div className="text-sm text-muted-foreground">
-                  Issues Resolved
-                </div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.issuesResolved")}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-sky-500">15,239</div>
-                <div className="text-sm text-muted-foreground">
-                  Active Citizens
-                </div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.activeCitizens")}</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-sky-500">48h</div>
-                <div className="text-sm text-muted-foreground">
-                  Avg Response
-                </div>
+                <div className="text-sm text-muted-foreground">{t("hero.stats.avgResponse")}</div>
               </div>
             </div>
           </div>
@@ -99,7 +91,7 @@ const Hero = () => {
             <div className="relative group rounded-2xl overflow-hidden shadow-2xl">
               {/* Base image */}
               <img
-                src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?q=80&w=800&h=600&fit=crop"
+                src={`${import.meta.env.BASE_URL}pb5.jpg`}
                 alt="Infrastructure and community"
                 className="w-full h-[500px] object-cover transition-all duration-700 ease-[cubic-bezier(.2,.8,.2,1)] will-change-transform
                  group-hover:scale-[1.06] group-hover:rotate-[0.6deg] group-hover:brightness-95"
@@ -126,9 +118,7 @@ const Hero = () => {
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full shadow-[0_0_10px_2px_rgba(34,197,94,0.6)]" />
-                  <span className="text-sm font-medium text-gray-800">
-                    Issue Reported
-                  </span>
+                  <span className="text-sm font-medium text-gray-800">{t("hero.floating.issueReported")}</span>
                 </div>
               </div>
 
@@ -140,9 +130,7 @@ const Hero = () => {
               >
                 <div className="flex items-center space-x-3">
                   <Users className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-medium text-gray-800">
-                    Community Active
-                  </span>
+                  <span className="text-sm font-medium text-gray-800">{t("hero.floating.communityActive")}</span>
                 </div>
               </div>
 

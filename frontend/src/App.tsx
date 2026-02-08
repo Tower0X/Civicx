@@ -18,7 +18,7 @@ const App = () => (
         <LoaderOverlay /> {/* <-- Global overlay gets rendered here */}
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
           <AnimatedRoutes />
         </BrowserRouter>
       </LoaderProvider>

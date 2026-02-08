@@ -13,6 +13,7 @@ import { VITE_BACKEND_URL } from "../config/config";
 import Player from "lottie-react";
 import emptyAnimation from "../assets/animations/empty.json";
 import HeaderAfterAuth from "../components/HeaderAfterAuth";
+import { useTranslation } from "react-i18next";
 import starloader from "../assets/animations/starloder.json";
 import { motion } from "framer-motion";
 import { useLoader } from "../contexts/LoaderContext";
@@ -40,6 +41,7 @@ const CitizenHome = () => {
   const [reportedIssues, setReportedIssues] = useState<Issues[]>([]);
   const [loading, setLoading] = useState(true);
   const { hideLoader } = useLoader();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -104,7 +106,7 @@ const CitizenHome = () => {
           animationData={starloader}
           style={{ height: "200px", width: "200px" }}
         />
-        <p className="text-muted-foreground mt-4">Fetching issues...</p>
+        <p className="text-muted-foreground mt-4">{t("admin.table.caption")}</p>
       </div>
     );
   }
@@ -121,12 +123,8 @@ const CitizenHome = () => {
         <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20 space-y-10">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-extrabold text-[#0577b7] tracking-wide">
-                Welcome, Citizen!
-              </h1>
-              <p className="text-gray-500 mt-2 text-base">
-                Help improve your community by reporting issues
-              </p>
+              <h1 className="text-4xl font-extrabold text-[#0577b7] tracking-wide">{t("citizen.welcome")}</h1>
+              <p className="text-gray-500 mt-2 text-base">{t("citizen.subtitle")}</p>
             </div>
             <Link to={`/citizen/profile`}>
               <Button
@@ -134,15 +132,13 @@ const CitizenHome = () => {
                 className="flex items-center space-x-2 rounded-full shadow-sm hover:shadow-md transition-all text-slate-500"
               >
                 <User className="h-4 w-4 text-purple-700" />
-                <span>My Profile</span>
+                <span>{t("citizen.myProfile")}</span>
               </Button>
             </Link>
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-slate-600 mb-4">
-              Search Issues by Location
-            </h2>
+            <h2 className="text-2xl font-semibold text-slate-600 mb-4">{t("citizen.searchHeading")}</h2>
             <div className="relative max-w-md">
               <Search
                 className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 z-20"
@@ -150,7 +146,7 @@ const CitizenHome = () => {
               />
               <Input
                 type="text"
-                placeholder="Enter city name..."
+                placeholder={t("citizen.searchPlaceholder")}
                 value={searchCity}
                 onChange={(e) => setSearchCity(e.target.value)}
                 className="pl-10 bg-white/70 backdrop-blur-md border border-gray-200 rounded-full placeholder:text-gray-400"
@@ -160,18 +156,14 @@ const CitizenHome = () => {
 
           <div>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold text-sky-600">
-                Recent Issues
+              <h2 className="text-2xl font-semibold text-sky-600">{t("citizen.recentIssues")}
                 {searchCity && (
                   <span className="text-lg font-normal text-gray-400 ml-2">
                     in {searchCity}
                   </span>
                 )}
               </h2>
-              <div className="text-sm text-gray-400">
-                {filteredIssues.length} issue
-                {filteredIssues.length !== 1 ? "s" : ""} found
-              </div>
+              <div className="text-sm text-gray-400">{t("citizen.issuesFound", { count: filteredIssues.length })}</div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-h-[600px] overflow-y-auto">
@@ -208,13 +200,11 @@ const CitizenHome = () => {
                       {issue.description}
                     </p>
                     <div className="space-y-2 text-xs text-gray-500">
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="h-3 w-3 text-gray-400" />
-                        <span>{issue.location.address}</span>
-                        <span className="font-medium text-teal-600">
-                          • {issue.type}
-                        </span>
-                      </div>
+                        <div className="flex items-center space-x-2">
+                          <MapPin className="h-3 w-3 text-gray-400" />
+                          <span>{issue.location.address}</span>
+                          <span className="font-medium text-teal-600">• {issue.type}</span>
+                        </div>
                       <div className="flex items-center space-x-2">
                         <User className="h-3 w-3 text-gray-400" />
                         <span>Reported by {issue.reportedBy}</span>
@@ -229,7 +219,7 @@ const CitizenHome = () => {
               ))}
             </div>
 
-            {filteredIssues.length === 0 && (
+                {filteredIssues.length === 0 && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -247,11 +237,11 @@ const CitizenHome = () => {
                 <p className="text-gray-400">
                   {searchCity ? (
                     <>
-                      No issues found for{" "}
+                      {t("citizen.noIssuesAvailable")} for {" "}
                       <span className="font-semibold">{searchCity}</span>
                     </>
                   ) : (
-                    "No issues available at the moment."
+                    t("citizen.noIssuesAvailable")
                   )}
                 </p>
               </motion.div>
@@ -260,14 +250,14 @@ const CitizenHome = () => {
 
           <div className="fixed bottom-8 right-8 z-50">
             <Link to="/citizen/create-issue">
-              <Button
+                <Button
                 size="lg"
                 className="civic-gradient text-white border-0 h-14 px-6 rounded-full 
                 shadow-lg hover:shadow-2xl hover:scale-105 
                 transition-transform duration-300"
               >
                 <Plus className="h-5 w-5 mr-2" />
-                Report New Issue
+                {t("citizen.reportNewIssueShort")}
               </Button>
             </Link>
           </div>

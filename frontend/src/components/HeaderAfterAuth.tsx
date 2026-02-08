@@ -3,6 +3,8 @@ import { Button } from "./ui/button.tsx";
 import { LogIn, LogOut, Shield, LayoutDashboard } from "lucide-react";
 import civicIssueLogo from "../assets/civic-issue.png";
 import { useAuth } from "../contexts/AuthContext.tsx";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type HeaderProps = {
   onFeaturesClick?: () => void;
@@ -11,6 +13,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = () => {
   const { user, logout } = useAuth();
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     logout();
@@ -35,20 +38,17 @@ const Header: React.FC<HeaderProps> = () => {
               <img src={civicIssueLogo} alt="civicIssueLogo" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">
-                CivicIssueRepoter
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Building Better Communities
-              </p>
+              <h1 className="text-xl font-bold text-foreground">{t("app.title")}</h1>
+              <p className="text-xs text-muted-foreground">{t("app.subtitle")}</p>
             </div>
           </Link>
 
           <div className="flex items-center space-x-3">
+            <LanguageSwitcher />
             {user ? (
               <>
                 <span className="text-sm text-muted-foreground hidden sm:block">
-                  Welcome,{" "}
+                  {t("auth.welcome")},{" "}
                   {user?.fullName ? user.fullName.split(" ")[0] : "Guest"}!
                 </span>
                 <Link to={user.role === "citizen" ? "/citizen" : "/admin"}>
@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = () => {
                     className="flex items-center space-x-2 text-slate-500"
                   >
                     <LayoutDashboard className="h-4 w-4 text-blue-700" />
-                    <span className="hidden sm:block">Dashboard</span>
+                    <span className="hidden sm:block">{t("auth.dashboard")}</span>
                   </Button>
                 </Link>
                 <Button
@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = () => {
                   className="flex items-center space-x-2 text-slate-500"
                 >
                   <LogOut className="h-4 w-4 text-blue-700" />
-                  <span className="hidden sm:block">Logout</span>
+                  <span className="hidden sm:block">{t("auth.logout")}</span>
                 </Button>
               </>
             ) : (

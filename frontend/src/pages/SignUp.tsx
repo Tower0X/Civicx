@@ -23,6 +23,7 @@ import { Button } from "../components/ui/button.tsx";
 import { Checkbox } from "../components/ui/checkbox.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { VITE_BACKEND_URL } from "../config/config.tsx";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -53,6 +54,7 @@ const SignUp = () => {
 
   const [activeTab, setActiveTab] = useState("citizen");
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Password validation: min 8 chars, uppercase, lowercase, digit, special char
   const validatePassword = (password: string) => {
@@ -217,12 +219,8 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-[#016dd0] to-[#159e52] bg-clip-text text-transparent">
-                CivicReport
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                Building Better Communities
-              </p>
+              <h1 className="text-3xl font-extrabold bg-gradient-to-r from-[#016dd0] to-[#159e52] bg-clip-text text-transparent">CivicReport</h1>
+              <p className="text-sm text-muted-foreground">{t("app.subtitle")}</p>
             </div>
           </Link>
         </div>
@@ -230,11 +228,9 @@ const SignUp = () => {
         <Card className="rounded-2xl shadow-2xl bg-white border-0">
           <CardHeader>
             <CardTitle>
-              <center>Create Account</center>
+              <center>{t("auth.createAccount")}</center>
             </CardTitle>
-            <CardDescription>
-              Join our community to report issues and help build better cities
-            </CardDescription>
+            <CardDescription>{t("auth.createAccountDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs value={activeTab} onValueChange={setActiveTab}>

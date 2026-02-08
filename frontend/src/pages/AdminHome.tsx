@@ -29,6 +29,7 @@ import {
 import { Link } from "react-router-dom";
 import { VITE_BACKEND_URL } from "../config/config";
 import HeaderAfterAuth from "../components/HeaderAfterAuth";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import Player from "lottie-react";
 import starloader from "../assets/animations/starloder.json";
@@ -58,6 +59,7 @@ const AdminHome = () => {
   const [loading, setLoading] = useState(true);
   const [issues, setIssues] = useState<Issues[]>([]);
   const { hideLoader } = useLoader();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -188,7 +190,7 @@ const AdminHome = () => {
           animationData={starloader}
           style={{ height: "200px", width: "200px" }}
         />
-        <p className="text-muted-foreground mt-4">Fetching issues...</p>
+        <p className="text-muted-foreground mt-4">{t("admin.table.caption")}</p>
       </div>
     );
   }
@@ -207,12 +209,8 @@ const AdminHome = () => {
           {/* Welcome Section with Profile Link */}
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-[#0577b7] ">
-                Admin Dashboard
-              </h1>
-              <p className="text-muted-foreground mt-2">
-                Manage and resolve community issues
-              </p>
+              <h1 className="text-3xl font-bold text-[#0577b7] ">{t("admin.title")}</h1>
+              <p className="text-muted-foreground mt-2">{t("admin.subtitle")}</p>
             </div>
             <Link to="/admin/profile">
               <Button
@@ -220,7 +218,7 @@ const AdminHome = () => {
                 className="flex items-center space-x-2 shadow-sm text-slate-500 "
               >
                 <User className="h-4 w-4 text-purple-700" />
-                <span>My Profile</span>
+                <span>{t("admin.myProfile")}</span>
               </Button>
             </Link>
           </div>
@@ -228,16 +226,14 @@ const AdminHome = () => {
           {/* Statistics Overview */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <div className="p-6 rounded-lg border shadow-lg bg-card  hover:scale-[1.02] transition-transform hover:shadow-xl transition-shadow duration-300  ">
-              <div className="text-2xl font-bold text-foreground  ">
-                {issues.length}
-              </div>
-              <p className="text-sm text-muted-foreground">Total Issues</p>
+              <div className="text-2xl font-bold text-foreground  ">{issues.length}</div>
+              <p className="text-sm text-muted-foreground">{t("admin.stats.totalIssues")}</p>
             </div>
             <div className="p-6 rounded-lg border shadow-lg bg-card hover:scale-[1.02] transition-transform hover:shadow-xl transition-shadow duration-300 ">
               <div className="text-2xl font-bold text-green-600">
                 {issues.filter((issue) => issue.status === "Resolved").length}
               </div>
-              <p className="text-sm text-muted-foreground">Resolved Issues</p>
+              <p className="text-sm text-muted-foreground">{t("admin.stats.resolvedIssues")}</p>
             </div>
             <div className="p-6 rounded-lg border shadow-lg bg-card hover:scale-[1.02] transition-transform hover:shadow-xl transition-shadow duration-300 ">
               <div className="text-2xl font-bold text-blue-600">
@@ -246,15 +242,13 @@ const AdminHome = () => {
                     .length
                 }
               </div>
-              <p className="text-sm text-muted-foreground">
-                Issues In Progress
-              </p>
+              <p className="text-sm text-muted-foreground">{t("admin.stats.inProgress")}</p>
             </div>
             <div className="p-6 rounded-lg border shadow-lg bg-card hover:scale-[1.02] transition-transform hover:shadow-xl transition-shadow duration-300 ">
               <div className="text-2xl font-bold text-yellow-600">
                 {issues.filter((issue) => issue.status === "Pending").length}
               </div>
-              <p className="text-sm text-muted-foreground">Pending</p>
+              <p className="text-sm text-muted-foreground">{t("admin.stats.pending")}</p>
             </div>
           </div>
 
@@ -264,7 +258,7 @@ const AdminHome = () => {
               <Search className="absolute  left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="Search issues..."
+                placeholder={t("admin.searchPlaceholder")}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 bg-white"
@@ -337,8 +331,8 @@ const AdminHome = () => {
 
           {/* Issues Table */}
           <div className="rounded-md border bg-white shadow-lg text-slate-500 pl-6 pr-6 hover:shadow-xl transition-shadow duration-300 ">
-            <Table>
-              <TableCaption>A list of all reported issues.</TableCaption>
+              <Table>
+              <TableCaption>{t("admin.table.caption")}</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>
@@ -347,7 +341,7 @@ const AdminHome = () => {
                       onClick={() => handleSort("title")}
                       className="w-full text-gray-700"
                     >
-                      Title
+                      {t("admin.table.title")}
                       {sortColumn === "title" &&
                         (sortDirection === "asc" ? (
                           <ArrowUp className="ml-2 h-4 w-4 text-gray-500 " />
@@ -362,7 +356,7 @@ const AdminHome = () => {
                       onClick={() => handleSort("location")}
                       className="w-full text-gray-700 "
                     >
-                      Location
+                      {t("admin.table.location")}
                       {sortColumn === "location" &&
                         (sortDirection === "asc" ? (
                           <ArrowUp className="ml-2 h-4 w-4 text-gray-500 " />
@@ -377,7 +371,7 @@ const AdminHome = () => {
                       onClick={() => handleSort("status")}
                       className="w-full text-gray-700"
                     >
-                      Status
+                      {t("admin.table.status")}
                       {sortColumn === "status" &&
                         (sortDirection === "asc" ? (
                           <ArrowUp className="ml-2 h-4 w-4 text-gray-500 " />
@@ -386,9 +380,7 @@ const AdminHome = () => {
                         ))}
                     </Button>
                   </TableHead>
-                  <TableHead className="text-right text-gray-700">
-                    Actions
-                  </TableHead>
+                  <TableHead className="text-right text-gray-700">{t("admin.table.actions")}</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -458,7 +450,7 @@ const AdminHome = () => {
                 {filteredIssues.length === 0 && (
                   <TableRow>
                     <TableCell colSpan={5} className="text-center">
-                      No issues found.
+                      {t("admin.table.noIssues")}
                     </TableCell>
                   </TableRow>
                 )}

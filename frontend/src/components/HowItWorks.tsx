@@ -1,6 +1,7 @@
 import { Card, CardContent } from "./ui/card";
 import { Camera, MapPin, Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -12,33 +13,31 @@ const fadeInUp = {
 };
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+
   const steps = [
     {
       icon: Camera,
-      title: "Capture the Issue",
-      description:
-        "Take a clear photo of the infrastructure problem using your mobile device or camera.",
+      title: t("howItWorks.steps.capture.title"),
+      description: t("howItWorks.steps.capture.desc"),
       color: "bg-blue-500",
     },
     {
       icon: MapPin,
-      title: "Add Location Details",
-      description:
-        "GPS automatically captures the exact location, or manually adjust for precision.",
+      title: t("howItWorks.steps.location.title"),
+      description: t("howItWorks.steps.location.desc"),
       color: "bg-green-500",
     },
     {
       icon: Send,
-      title: "Submit Your Report",
-      description:
-        "Add a brief description and submit your report to the appropriate authorities.",
+      title: t("howItWorks.steps.submit.title"),
+      description: t("howItWorks.steps.submit.desc"),
       color: "bg-purple-500",
     },
     {
       icon: CheckCircle,
-      title: "Track Progress",
-      description:
-        "Monitor the status of your report and receive updates when action is taken.",
+      title: t("howItWorks.steps.track.title"),
+      description: t("howItWorks.steps.track.desc"),
       color: "bg-orange-500",
     },
   ];
@@ -47,13 +46,8 @@ const HowItWorks = () => {
     <section id="how-it-works" className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            How It Works
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Reporting civic issues is simple and straightforward. Follow these
-            four easy steps to make a difference.
-          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{t("howItWorks.title")}</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("howItWorks.description")}</p>
         </div>
 
         <div className="relative">

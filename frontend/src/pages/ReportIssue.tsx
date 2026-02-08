@@ -12,6 +12,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group";
 import { ArrowLeft, MapPin, Upload, Send } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import MapComponent, { CAMEROON_CITIES } from "../components/MapBox";
 import { toast } from "sonner";
 import { VITE_BACKEND_URL } from "../config/config";
@@ -34,6 +35,7 @@ const ReportIssue = () => {
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -62,12 +64,8 @@ const ReportIssue = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (
-      !formData.title ||
-      !formData.issueDescription ||
-      !formData.issueLocation
-    ) {
-      toast.error("Please fill all required fields");
+    if (!formData.title || !formData.issueDescription || !formData.issueLocation) {
+      toast.error(t("reportIssue.validation.fillAll"));
       return;
     }
 
@@ -75,7 +73,7 @@ const ReportIssue = () => {
     try {
       const token = localStorage.getItem("auth_token");
       if (!token) {
-        toast.error("You must be logged in");
+        toast.error(t("reportIssue.validation.mustBeLoggedIn"));
         return;
       }
 
@@ -109,29 +107,26 @@ const ReportIssue = () => {
 
       const result = await response.json();
       if (response.ok) {
-        toast.success("Issue reported successfully!");
+        toast.success(t("reportIssue.success"));
         navigate("/citizen");
       } else {
-        toast.error(result.message || "Failed to report issue");
+        toast.error(result.message || t("reportIssue.failure"));
       }
     } catch (error) {
       console.error("Error reporting issue:", error);
-      toast.error("Something went wrong");
+      toast.error(t("reportIssue.error"));
     } finally {
       setLoading(false);
     }
   };
 
   const issueTypes = [
-    { value: "Road Infrastructure", label: "Road Infrastructure" },
-    { value: "Waste Management", label: "Waste Management" },
-    { value: "Environmental Issues", label: "Environmental Issues" },
-    {
-      value: "Utilities & Infrastructure",
-      label: "Utilities & Infrastructure",
-    },
-    { value: "Public Safety", label: "Public Safety" },
-    { value: "Other", label: "Other" },
+    { value: "road", labelKey: "reportIssue.types.road" },
+    { value: "waste", labelKey: "reportIssue.types.waste" },
+    { value: "environment", labelKey: "reportIssue.types.environment" },
+    { value: "utilities", labelKey: "reportIssue.types.utilities" },
+    { value: "safety", labelKey: "reportIssue.types.safety" },
+    { value: "other", labelKey: "reportIssue.types.other" },
   ];
 
   return (
@@ -148,13 +143,13 @@ const ReportIssue = () => {
                   className="flex items-center space-x-2 text-slate-500"
                 >
                   <ArrowLeft className="h-4 w-4 text-blue-600" />
-                  <span>Back to Dashboard</span>
+                  <span>{t("reportIssue.backToDashboard")}</span>
                 </Button>
               </Link>
             </div>
             <div>
               <h1 className="text-xl font-bold text-cyan-600">
-                Report New Issue
+                {t("reportIssue.title")}
               </h1>
             </div>
             <div className="w-24"></div>
@@ -169,13 +164,13 @@ const ReportIssue = () => {
           <div className="lg:col-span-2">
             <Card className="shadow-lg bg-white/80  text-slate-600">
               <CardHeader>
-                <CardTitle>Report New Issue</CardTitle>
+                <CardTitle>{t("reportIssue.title")}</CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Issue Title */}
                   <div className="space-y-2">
-                    <Label htmlFor="title">Issue Title *</Label>
+                    <Label htmlFor="title">{t("reportIssue.form.title")}</Label>
                     <Input
                       id="title"
                       type="text"
@@ -183,7 +178,7 @@ const ReportIssue = () => {
                       onChange={(e) =>
                         handleInputChange("title", e.target.value)
                       }
-                      placeholder="Enter your issue title"
+                      placeholder={t("reportIssue.form.titlePlaceholder")}
                       required
                       className="shadow-sm"
                     />
@@ -192,7 +187,7 @@ const ReportIssue = () => {
                   {/* Location Name - PRIMARY FIELD */}
                   <div className="space-y-2 p-4 border-2 border-green-200 bg-green-50 rounded-lg">
                     <Label htmlFor="issueLocation" className="font-bold text-green-700">
-                      📍 Location Name *
+                      {t("reportIssue.form.locationLabel")}
                     </Label>
                     <Input
                       id="issueLocation"
@@ -201,21 +196,19 @@ const ReportIssue = () => {
                       onChange={(e) =>
                         handleInputChange("issueLocation", e.target.value)
                       }
-                      placeholder="e.g., Downtown Yaoundé, Rue Foch, Douala"
+                      placeholder={t("reportIssue.form.locationPlaceholder")}
                       className="shadow-sm bg-white"
                       required
                     />
-                    <p className="text-xs text-green-600">
-                      ✓ This name will be displayed in issue reports
-                    </p>
+                    <p className="text-xs text-green-600">{t("reportIssue.form.locationNote")}</p>
                   </div>
 
                   {/* Issue Information */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Issue Information</h3>
+                    <h3 className="text-lg font-medium">{t("reportIssue.section.issueInformation")}</h3>
 
                     <div className="space-y-2">
-                      <Label>Issue Type *</Label>
+                      <Label>{t("reportIssue.form.type")}</Label>
                       <RadioGroup
                         value={formData.issueType}
                         onValueChange={(value) =>
@@ -230,7 +223,7 @@ const ReportIssue = () => {
                           >
                             <RadioGroupItem value={type.value} id={type.value} />
                             <Label htmlFor={type.value} className="text-sm">
-                              {type.label}
+                              {t(type.labelKey)}
                             </Label>
                           </div>
                         ))}
@@ -238,16 +231,14 @@ const ReportIssue = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="issueDescription">
-                        Issue Description *
-                      </Label>
+                      <Label htmlFor="issueDescription">{t("reportIssue.form.description")}</Label>
                       <Textarea
                         id="issueDescription"
                         value={formData.issueDescription}
                         onChange={(e) =>
                           handleInputChange("issueDescription", e.target.value)
                         }
-                        placeholder="Describe the issue in detail..."
+                        placeholder={t("reportIssue.form.descriptionPlaceholder")}
                         className="min-h-24 shadow-sm"
                         required
                       />
@@ -256,10 +247,10 @@ const ReportIssue = () => {
 
                   {/* File Upload */}
                   <div className="space-y-4">
-                    <h3 className="text-lg font-medium">Upload Media</h3>
+                    <h3 className="text-lg font-medium">{t("reportIssue.section.uploadMedia")}</h3>
 
                     <div className="space-y-2">
-                      <Label htmlFor="file">Upload Image/Video</Label>
+                      <Label htmlFor="file">{t("reportIssue.form.upload")}</Label>
                       <div className="flex items-center space-x-4">
                         <Input
                           id="file"
@@ -272,8 +263,10 @@ const ReportIssue = () => {
                       </div>
                       {selectedFile && (
                         <p className="text-sm text-muted-foreground">
-                          Selected: {selectedFile.name} (
-                          {(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+                          {t("reportIssue.selectedFile", {
+                            name: selectedFile.name,
+                            size: (selectedFile.size / 1024 / 1024).toFixed(2),
+                          })}
                         </p>
                       )}
                     </div>
@@ -287,10 +280,10 @@ const ReportIssue = () => {
                     size="lg"
                   >
                     {loading ? (
-                      "Submitting..."
+                      t("reportIssue.form.submitting")
                     ) : (
                       <>
-                        <Send className="h-5 w-5 mr-2" /> Submit Issue
+                        <Send className="h-5 w-5 mr-2" /> {t("reportIssue.form.submit")}
                       </>
                     )}
                   </Button>
@@ -304,11 +297,11 @@ const ReportIssue = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-slate-600">
                 <MapPin className="h-5 w-5 text-blue-600" />
-                <span>Map Reference</span>
+                <span>{t("reportIssue.map.title")}</span>
               </CardTitle>
               {/* City Selector */}
               <div className="mt-4 space-y-2">
-                <Label className="text-sm font-medium">City</Label>
+                <Label className="text-sm font-medium">{t("reportIssue.map.city")}</Label>
                 <div className="flex gap-2">
                   <Button
                     type="button"
@@ -316,7 +309,7 @@ const ReportIssue = () => {
                     onClick={() => setSelectedCity("yaounde")}
                     className="flex-1 text-xs"
                   >
-                    Yaoundé
+                    {t("reportIssue.map.yaounde")}
                   </Button>
                   <Button
                     type="button"
@@ -324,7 +317,7 @@ const ReportIssue = () => {
                     onClick={() => setSelectedCity("douala")}
                     className="flex-1 text-xs"
                   >
-                    Douala
+                    {t("reportIssue.map.douala")}
                   </Button>
                 </div>
               </div>
@@ -335,16 +328,14 @@ const ReportIssue = () => {
                   onLocationSelect={handleLocationSelect}
                   defaultLocation={
                     selectedCity === "yaounde"
-                      ? { ...CAMEROON_CITIES.yaounde, name: "Yaoundé" }
-                      : { ...CAMEROON_CITIES.douala, name: "Douala" }
+                      ? { ...CAMEROON_CITIES.yaounde, name: t("reportIssue.map.yaounde") }
+                      : { ...CAMEROON_CITIES.douala, name: t("reportIssue.map.douala") }
                   }
                 />
               </div>
               {formData.location.latitude && formData.location.longitude && (
                 <div className="mt-3 p-2 bg-blue-50 rounded text-xs">
-                  <p className="text-blue-600 font-semibold">
-                    Coordinates captured
-                  </p>
+                  <p className="text-blue-600 font-semibold">{t("reportIssue.map.coordinatesCaptured")}</p>
                 </div>
               )}
             </CardContent>

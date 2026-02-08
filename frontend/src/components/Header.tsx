@@ -4,6 +4,8 @@ import { LogIn, LogOut, Shield, User } from "lucide-react";
 import civicIssueLogo from "../assets/civic-issue.png";
 import { useAuth } from "../contexts/AuthContext.tsx";
 import { handleSupportClick } from "./SupportModel.tsx";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type HeaderProps = {
   onFeaturesClick?: () => void;
@@ -15,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({
   onHowItWorksClick,
 }) => {
   const { user, logout } = useAuth();
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     logout();
@@ -39,17 +42,13 @@ const Header: React.FC<HeaderProps> = ({
               <img src={civicIssueLogo} alt="civicIssueLogo" />
             </div>
             <div>
-              <h1 className="text-xlz font-bold text-foreground">
-                CivicIssueRepoter
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                Building Better Communities
-              </p>
+              <h1 className="text-xlz font-bold text-foreground">{t("app.title")}</h1>
+              <p className="text-xs text-muted-foreground">{t("app.subtitle")}</p>
             </div>
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-8">
-            <a
+              <a
               href="#features"
               className="relative text-foreground font-medium transition-all duration-200
                after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-cyan-500
@@ -60,8 +59,8 @@ const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 onFeaturesClick && onFeaturesClick();
               }}
-            >
-              Features
+              >
+              {t("nav.features")}
             </a>
 
             <a
@@ -76,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({
                 onHowItWorksClick && onHowItWorksClick();
               }}
             >
-              How It Works
+              {t("nav.howItWorks")}
             </a>
 
             <a
@@ -88,15 +87,16 @@ const Header: React.FC<HeaderProps> = ({
                hover:text-cyan-500 hover:after:w-full
                focus-visible:text-cyan-500 focus-visible:after:w-full outline-none"
             >
-              Contact
+              {t("nav.contact")}
             </a>
           </nav>
 
           <div className="flex items-center space-x-3">
+            <LanguageSwitcher />
             {user ? (
               <>
                 <span className="text-sm text-muted-foreground hidden sm:block">
-                  Welcome,{" "}
+                  {t("auth.welcome")}, {" "}
                   {user?.fullName ? user.fullName.split(" ")[0] : "Guest"}!
                 </span>
                 <Link to={user.role === "citizen" ? "/citizen" : "/admin"}>
@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({
                     className="flex items-center space-x-2"
                   >
                     <User className="h-4 w-4 text-blue-700" />
-                    <span className="hidden sm:block">Dashboard</span>
+                    <span className="hidden sm:block">{t("auth.dashboard")}</span>
                   </Button>
                 </Link>
                 <Button
@@ -116,7 +116,7 @@ const Header: React.FC<HeaderProps> = ({
                   className="flex items-center space-x-2"
                 >
                   <LogOut className="h-4 w-4 text-blue-700" />
-                  <span>Logout</span>
+                  <span>{t("auth.logout")}</span>
                 </Button>
               </>
             ) : (
@@ -128,7 +128,7 @@ const Header: React.FC<HeaderProps> = ({
                     className="hidden sm:flex items-center space-x-2 text-slate-700"
                   >
                     <LogIn className="h-4 w-4 text-blue-600" />
-                    <span>Sign In</span>
+                    <span>{t("auth.signIn")}</span>
                   </Button>
                 </Link>
                 <Link to="/signup">
@@ -137,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({
                     className="flex items-center space-x-2 civic-gradient border-0 text-white hover:opacity-90"
                   >
                     <Shield className="h-4 w-4" />
-                    <span>Sign Up</span>
+                    <span>{t("auth.signUp")}</span>
                   </Button>
                 </Link>
               </>

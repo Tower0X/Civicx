@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from "./ui/card";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -18,47 +19,43 @@ const fadeInUp = {
 };
 
 const Features = () => {
+  const { t } = useTranslation();
+
   const features = [
     {
       icon: Camera,
-      title: "Photo Documentation",
-      description:
-        "Capture and upload high-quality images of infrastructure issues with automatic metadata tagging.",
+      title: t("featuresSection.items.photo.title"),
+      description: t("featuresSection.items.photo.desc"),
       color: "text-blue-600",
     },
     {
       icon: MapPin,
-      title: "GPS Location Tracking",
-      description:
-        "Precise location capture using GPS coordinates ensures accurate issue positioning and faster response.",
+      title: t("featuresSection.items.gps.title"),
+      description: t("featuresSection.items.gps.desc"),
       color: "text-green-600",
     },
     {
       icon: Users,
-      title: "Community Engagement",
-      description:
-        "Connect with neighbors, track issue status, and see the impact of your reports on the community.",
+      title: t("featuresSection.items.community.title"),
+      description: t("featuresSection.items.community.desc"),
       color: "text-purple-600",
     },
     {
       icon: Zap,
-      title: "Real-time Updates",
-      description:
-        "Get instant notifications about your reported issues and track resolution progress in real-time.",
+      title: t("featuresSection.items.realtime.title"),
+      description: t("featuresSection.items.realtime.desc"),
       color: "text-orange-600",
     },
     {
       icon: Shield,
-      title: "Admin Dashboard",
-      description:
-        "Comprehensive administrative tools for managing reports, assigning tasks, and monitoring city-wide issues.",
+      title: t("featuresSection.items.admin.title"),
+      description: t("featuresSection.items.admin.desc"),
       color: "text-red-600",
     },
     {
       icon: BarChart3,
-      title: "Analytics & Insights",
-      description:
-        "Data-driven insights help administrators prioritize resources and track community improvement trends.",
+      title: t("featuresSection.items.analytics.title"),
+      description: t("featuresSection.items.analytics.desc"),
       color: "text-indigo-600",
     },
   ];
@@ -68,12 +65,9 @@ const Features = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Powerful Features for Better Communities
+            {t("featuresSection.title")}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to report, track, and resolve civic issues
-            efficiently and effectively.
-          </p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{t("featuresSection.description")}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (

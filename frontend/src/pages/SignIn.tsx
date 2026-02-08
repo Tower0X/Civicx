@@ -22,6 +22,7 @@ import { Button } from "../components/ui/button";
 import { useAuth } from "../contexts/AuthContext";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLoader } from "../contexts/LoaderContext";
+import { useTranslation } from "react-i18next";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +37,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const { showLoader, hideLoader } = useLoader();
+  const { t } = useTranslation();
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -65,25 +67,25 @@ const SignIn = () => {
       }
 
       if (result === true) {
-        toast.success("Sign In Successful!", {
+        toast.success(t("auth.signInSuccess"), {
           description:
             activeTab === "citizen"
-              ? "Welcome back!"
-              : "Welcome back, Administrator!",
+              ? t("auth.welcomeBack")
+              : t("auth.welcomeBackAdmin"),
         });
         navigate(activeTab === "citizen" ? "/citizen" : "/admin", {
           replace: true,
         });
       } else {
-        toast.error("Sign In Failed!", {
-          description: "Invalid credentials",
+        toast.error(t("auth.signInFailed"), {
+          description: t("auth.invalidCredentials"),
         });
         hideLoader();
       }
     } catch (error) {
       console.error(error);
-      toast.error("Sign In Failed!", {
-        description: "Something went wrong",
+      toast.error(t("auth.signInFailed"), {
+        description: t("auth.somethingWentWrong"),
       });
       hideLoader();
     }
@@ -117,11 +119,9 @@ const SignIn = () => {
         <Card className="rounded-2xl shadow-2xl bg-white border-0">
           <CardHeader>
             <CardTitle>
-              <center>Sign In</center>
+              <center>{t("auth.signIn")}</center>
             </CardTitle>
-            <CardDescription>
-              Access your account to report issues or manage community reports
-            </CardDescription>
+            <CardDescription>{t("auth.signInDescription")}</CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs
@@ -133,13 +133,13 @@ const SignIn = () => {
                   value="citizen"
                   className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#016dd0] data-[state=active]:to-[#159e52] data-[state=active]:text-white"
                 >
-                  Citizen
+                  {t("auth.citizen")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="admin"
                   className="rounded-full data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#016dd0] data-[state=active]:to-[#159e52] data-[state=active]:text-white"
                 >
-                  Administrator
+                  {t("auth.administrator")}
                 </TabsTrigger>
               </TabsList>
 
@@ -156,7 +156,7 @@ const SignIn = () => {
                     >
                       <form onSubmit={handleSignIn} className="space-y-4">
                         <div>
-                          <Label htmlFor="citizen-email">Email</Label>
+                          <Label htmlFor="citizen-email">{t("form.email")}</Label>
                           <Input
                             id="citizen-email"
                             type="email"
@@ -171,7 +171,7 @@ const SignIn = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="citizen-password">Password</Label>
+                          <Label htmlFor="citizen-password">{t("form.password")}</Label>
                           <div className="relative">
                             <Input
                               id="citizen-password"
@@ -200,11 +200,11 @@ const SignIn = () => {
                             </Button>
                           </div>
                         </div>
-                        <Button
+                          <Button
                           type="submit"
                           className="w-full bg-gradient-to-r from-[#016dd0] to-[#159e52] text-white hover:opacity-70"
                         >
-                          Sign In as Citizen
+                          {t("auth.signInCitizen")}
                         </Button>
                       </form>
                     </motion.div>
@@ -223,7 +223,7 @@ const SignIn = () => {
                     >
                       <form onSubmit={handleSignIn} className="space-y-4">
                         <div>
-                          <Label htmlFor="admin-email">Email</Label>
+                          <Label htmlFor="admin-email">{t("form.email")}</Label>
                           <Input
                             id="admin-email"
                             type="email"
@@ -238,7 +238,7 @@ const SignIn = () => {
                           />
                         </div>
                         <div>
-                          <Label htmlFor="admin-password">Password</Label>
+                          <Label htmlFor="admin-password">{t("form.password")}</Label>
                           <div className="relative">
                             <Input
                               id="admin-password"
@@ -268,7 +268,7 @@ const SignIn = () => {
                           </div>
                         </div>
                         <div>
-                          <Label htmlFor="admin-code">Admin Code</Label>
+                          <Label htmlFor="admin-code">{t("auth.adminCode")}</Label>
                           <Input
                             id="admin-code"
                             value={adminForm.adminAccessCode}
@@ -285,7 +285,7 @@ const SignIn = () => {
                           type="submit"
                           className="w-full bg-gradient-to-r from-[#016dd0] to-[#159e52] text-white hover:opacity-70"
                         >
-                          Sign In as Administrator
+                          {t("auth.signInAdmin")}
                         </Button>
                       </form>
                     </motion.div>
@@ -295,17 +295,12 @@ const SignIn = () => {
 
               <div className="mt-6 text-center">
                 <p className="text-sm text-muted-foreground">
-                  Don{"'"}t have an account?{" "}
+                  {t("auth.noAccount")}{" "}
                   <Link to="/signup" className="text-primary hover:underline">
-                    Sign up here
+                    {t("auth.signUpHere")}
                   </Link>
                 </p>
-                <Link
-                  to="/"
-                  className="text-sm text-muted-foreground hover:text-primary"
-                >
-                  ← Back to Home
-                </Link>
+                <Link to="/" className="text-sm text-muted-foreground hover:text-primary">← {t("nav.features")}</Link>
               </div>
             </Tabs>
           </CardContent>

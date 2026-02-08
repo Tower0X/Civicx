@@ -3,8 +3,11 @@ import { Button } from "./ui/button";
 import civicIssueLogo from "../assets/civic-issue.png";
 import { Link } from "react-router-dom";
 import { handleSupportClick } from "./SupportModel";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,14 +19,9 @@ const Footer = () => {
                 {/* <MapPin className="h-5 w-5 text-white" /> */}
                 <img src={civicIssueLogo} alt="civicIssueLogo" />
               </div>
-              <h3 className="text-lg font-bold text-foreground">
-                CivicIssueRepoter
-              </h3>
+              <h3 className="text-lg font-bold text-foreground">{t("footer.company")}</h3>
             </div>
-            <p className="text-muted-foreground">
-              Empowering communities to report and resolve civic issues through
-              technology and civic engagement.
-            </p>
+            <p className="text-muted-foreground">{t("footer.description")}</p>
             <div className="flex space-x-2">
               <Button variant="ghost" size="sm" className="p-2">
                 <X className="h-4 w-4" />
@@ -39,15 +37,11 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">
-              Quick Links
-            </h4>
+            <h4 className="text-lg font-semibold text-foreground">{t("footer.quickLinks")}</h4>
             <ul className="space-y-2">
               <Link to="/report-issue">
                 <li>
-                  <span className="text-muted-foreground hover:text-primary transition-colors">
-                    Report Issue
-                  </span>
+                  <span className="text-muted-foreground hover:text-primary transition-colors">{t("footer.reportIssue")}</span>
                 </li>
               </Link>
               <li>
@@ -55,7 +49,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  View Reports
+                  {t("footer.viewReports")}
                 </a>
               </li>
               <li>
@@ -63,7 +57,7 @@ const Footer = () => {
                   href="#how-it-works"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  How It Works
+                  {t("footer.howItWorks")}
                 </a>
               </li>
               <li>
@@ -71,7 +65,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Community Guidelines
+                  {t("footer.communityGuidelines")}
                 </a>
               </li>
             </ul>
@@ -79,14 +73,14 @@ const Footer = () => {
 
           {/* Support */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Support</h4>
+            <h4 className="text-lg font-semibold text-foreground">{t("footer.support")}</h4>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Help Center
+                  {t("footer.helpCenter")}
                 </a>
               </li>
               <li>
@@ -94,7 +88,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Privacy Policy
+                  {t("footer.privacy")}
                 </a>
               </li>
               <li>
@@ -102,7 +96,7 @@ const Footer = () => {
                   href="#"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Terms of Service
+                  {t("footer.terms")}
                 </a>
               </li>
               <li>
@@ -111,7 +105,7 @@ const Footer = () => {
                   onClick={handleSupportClick}
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Contact Us
+                  {t("footer.contactUs")}
                 </a>
               </li>
             </ul>
@@ -119,35 +113,26 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Contact</h4>
+            <h4 className="text-lg font-semibold text-foreground">{t("footer.contact")}</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">
-                  support@civicreport.com
-                </span>
+                <span className="text-muted-foreground">{t("footer.email")}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">+91 0123456789</span>
+                <span className="text-muted-foreground">{t("footer.phone")}</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-muted-foreground mt-1" />
-                <span className="text-muted-foreground">
-                  123 Civic Center
-                  <br />
-                  Community City, CC 12345
-                </span>
+                <span className="text-muted-foreground">{t("footer.address")}</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t mt-12 pt-8 text-center">
-          <p className="text-muted-foreground">
-            © 2024 CivicIssueRepoter. All rights reserved. Building better
-            communities together.
-          </p>
+          <p className="text-muted-foreground">{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>
