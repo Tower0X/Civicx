@@ -1,0 +1,33 @@
+services:
+  - type: web_service
+    name: civicx-backend
+    env: node
+    region: oregon
+    branch: main
+    root: backend
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    plan: free
+
+  - type: static_site
+    name: civicx-frontend
+    branch: main
+    root: frontend
+    buildCommand: "npm install && npm run build"
+    publishPath: frontend/dist
+    plan: free
+services:
+  - type: web
+    name: civicx-backend
+    env: node
+    plan: free
+    path: backend
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+
+staticSites:
+  - name: civicx-frontend
+    branch: main
+    path: frontend
+    buildCommand: "npm install && npm run build"
+    publishPath: frontend/dist
