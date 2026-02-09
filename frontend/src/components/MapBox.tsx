@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -37,7 +37,6 @@ const MapComponent: React.FC<MapComponentProps> = ({
     defaultLocation.lng,
   ]);
   const [address, setAddress] = useState<string>(defaultLocation.name);
-  const [mapInstance, setMapInstance] = useState<any>(null);
 
   const handleMapClick = async (e: any) => {
     const { lat, lng } = e.latlng;
@@ -47,6 +46,16 @@ const MapComponent: React.FC<MapComponentProps> = ({
     const addr = await reverseGeocode(lng, lat);
     setAddress(addr);
     onLocationSelect(lat, lng, addr);
+  };
+
+  // react-leaflet way to listen to map events
+  const MapClickHandler: React.FC<{ onMapClick: (e: any) => void }> = ({ onMapClick }) => {
+    useMapEvents({
+      click: (e) => {
+        onMapClick(e);
+      },
+    });
+    return null;
   };
 
   const handleMarkerDragEnd = async (e: any) => {
@@ -72,13 +81,8 @@ const MapComponent: React.FC<MapComponentProps> = ({
   }
 
   return (
-    <MapContainer
-      center={position}
-      zoom={defaultLocation.name === "Cameroon" ? 6 : 13}
-      style={{ width: "100%", height: "100%" }}
-      onClick={handleMapClick}
-      ref={setMapInstance}
-    >
+    <MapContainer center={position} zoom={defaultLocation.name === "Cameroon" ? 6 : 13} style={{ width: "100%", height: "100%" }}>
+      <MapClickHandler onMapClick={handleMapClick} />
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
