@@ -8,6 +8,9 @@ services:
     buildCommand: "npm install && npm run build"
     startCommand: "npm start"
     plan: free
+    envVars:
+      - key: CORS_ORIGIN
+        value: https://urbancare-hiut.onrender.com/
 
   - type: static_site
     name: civicx-frontend
@@ -15,6 +18,9 @@ services:
     root: frontend
     buildCommand: "npm install && npm run build"
     publishPath: frontend/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://urbancare-hiut.onrender.com/
     plan: free
 services:
   - type: web
